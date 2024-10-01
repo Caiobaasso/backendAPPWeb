@@ -1,18 +1,14 @@
-import Evento from "./Modelo/Evento.js";
+import express from "express";
+import rotaEvento from "./Rotas/rotasEventos.js";
 
-const evento = new Evento("1", "Show de Rock Internacional", "Venha curtir as maiores bandas de rock em um evento inesquecível!", "05/12/2024", "Arena São Paulo", "250", "img/show.webp");
+const app = express();
+const host = '0.0.0.0';
+const port = 3001;
 
-/*
-evento.incluir().then(() =>{
-    console.log("Incluido com sucesso");
-}).catch((erro) =>{
-    console.log(erro);
-}); */
+app.use(express.json());
 
-evento.consultar("1").then((listaEventos)=>{
-    for (const evento of listaEventos){
-        console.log(evento.toString());
-    }
-}).catch((erro) =>{
-    console.log("Erro ao consultar os eventos: " + erro);
-}) 
+app.use('/eventos', rotaEvento);
+
+app.listen(port,host, () => {
+    console.log(`Servidor rodando em http://${host}:${port}`);
+})

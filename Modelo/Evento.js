@@ -88,6 +88,18 @@ export default class Evento{
                 Imagem: ${this.#imagem}`;
     }
 
+    toJSON(){
+        return {
+            cod: this.#cod,
+            nome: this.#nome,
+            descricao: this.#descricao,
+            data: this.#data,
+            local: this.#local,
+            preco: this.#preco,
+            imagem: this.#imagem
+        }
+    }
+
     async incluir(){
         const eventoDAO = new EventoDAO();
         await eventoDAO.gravar(this);

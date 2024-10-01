@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Caiobaasso/backendAPPWeb#readme",
   "dependencies": {
+    "express": "^4.21.0",
     "mysql2": "^3.11.3"
   }
 }
